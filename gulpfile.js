@@ -16,8 +16,6 @@ const uglify = require("gulp-uglify");
 // Load package.json for banner
 const pkg = require('./package.json');
 
-// Set the banner content
-
 // BrowserSync
 function browserSync(done) {
   browsersync.init({
@@ -60,7 +58,7 @@ function modules() {
     '!./node_modules/jquery/dist/core.js'
   ])
     .pipe(gulp.dest('./vendor/jquery'));
-  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing, magnificPopup);
+  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing);
 }
 
 // CSS task
@@ -75,9 +73,6 @@ function css() {
     .on("error", sass.logError)
     .pipe(autoprefixer({
       cascade: false
-    }))
-    .pipe(header(banner, {
-      pkg: pkg
     }))
     .pipe(gulp.dest("./css"))
     .pipe(rename({
@@ -96,9 +91,6 @@ function js() {
       '!./js/*.min.js'
     ])
     .pipe(uglify())
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
     .pipe(rename({
       suffix: '.min'
     }))
