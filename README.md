@@ -1,6 +1,6 @@
 ## About
 
-This is my UX Portfolio site. Visit it here: https://petekul.github.io/portfolio/
+This is my UX Portfolio site. Visit it here: https://petekul.github.io
 
 #### Gulp Tasks
 
