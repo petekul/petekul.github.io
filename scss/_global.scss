@@ -3,11 +3,12 @@ body,
 html {
   width: 100%;
   height: 100%;
+  background: #F7F7F7;
 }
 
 // Typography
 .text-white-75 {
-  color: fade-out($white, .25);
+  color: #555555;
 }
 
 // Custom horizontal rules
@@ -38,4 +39,20 @@ hr.light {
 // Page section padding
 .page-section {
   padding: 8rem 0;
+}
+
+.my-bot {
+  margin-bottom: 6rem;
+}
+
+i {
+  padding: 2rem;
+}
+
+.icons {
+  text-decoration: none !important;
+  color: #555555;
+}
+#contact {
+  padding: 3rem;
 }
