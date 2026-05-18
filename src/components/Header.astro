@@ -1,0 +1,31 @@
+---
+const nav = [
+  { href: '#about',      label: 'About'      },
+  { href: '#experience', label: 'Experience' },
+  { href: '#skills',     label: 'Skills'     },
+  { href: '#personal',   label: 'Personal'   },
+  { href: '#contact',    label: 'Contact'    },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
+  <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#about" class="font-semibold text-slate-900 hover:text-indigo-600 transition-colors text-sm">
+      Pete C.
+    </a>
+    <nav>
+      <ul class="flex items-center gap-1">
+        {nav.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class="px-3 py-1.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

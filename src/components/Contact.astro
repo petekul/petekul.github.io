@@ -1,0 +1,52 @@
+---
+const links = [
+  {
+    label:   "Email",
+    href:    "mailto:pete.chitvicheankul@gmail.com",
+    icon:    "✉️",
+    display: "pete.chitvicheankul@gmail.com",
+  },
+  {
+    label:   "GitHub",
+    href:    "https://github.com/petekul",
+    icon:    "⌨️",
+    display: "github.com/petekul",
+  },
+  {
+    label:   "LinkedIn",
+    href:    "https://linkedin.com/in/", // ← add your LinkedIn handle
+    icon:    "💼",
+    display: "LinkedIn",
+  },
+];
+---
+
+<section id="contact" class="py-24 bg-slate-900 text-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-2">Get in touch</h2>
+    <p class="text-slate-400 mb-12 max-w-md mx-auto">
+      Always open to interesting conversations, collaborations, or opportunities.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
+      {links.map(({ label, href, icon, display }) => (
+        <a
+          href={href}
+          target={href.startsWith('http') ? '_blank' : undefined}
+          rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          class="flex items-center gap-3 px-6 py-4 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors text-left"
+        >
+          <span class="text-xl" aria-hidden="true">{icon}</span>
+          <div>
+            <p class="text-xs text-slate-400 mb-0.5">{label}</p>
+            <p class="text-sm font-medium text-white">{display}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-slate-600 text-sm">
+      Built with <a href="https://astro.build" class="text-slate-500 hover:text-slate-400 transition-colors" target="_blank" rel="noopener noreferrer">Astro</a> & Tailwind CSS · Hosted on GitHub Pages
+    </p>
+  </div>
+</section>

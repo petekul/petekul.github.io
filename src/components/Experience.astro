@@ -1,0 +1,70 @@
+---
+interface Job {
+  company:  string;
+  role:     string;
+  period:   string;
+  location: string;
+  bullets:  string[];
+}
+
+// ← Replace with your actual work history
+const jobs: Job[] = [
+  {
+    company:  "Company Name",
+    role:     "Job Title",
+    period:   "Month Year – Present",
+    location: "City, Country",
+    bullets: [
+      "Key achievement or responsibility.",
+      "Key achievement or responsibility.",
+      "Key achievement or responsibility.",
+    ],
+  },
+  {
+    company:  "Previous Company",
+    role:     "Previous Role",
+    period:   "Month Year – Month Year",
+    location: "City, Country",
+    bullets: [
+      "Key achievement or responsibility.",
+      "Key achievement or responsibility.",
+    ],
+  },
+];
+---
+
+<section id="experience" class="py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Experience</h2>
+    <p class="text-slate-500 mb-12">Where I've worked and what I've built.</p>
+
+    <div class="relative">
+      <div class="absolute left-0 top-2 bottom-2 w-px bg-slate-100 ml-1.5 hidden md:block" aria-hidden="true"></div>
+
+      <div class="space-y-12">
+        {jobs.map((job) => (
+          <div class="md:pl-10 relative">
+            <div class="hidden md:block absolute left-0 top-1.5 w-3 h-3 rounded-full bg-indigo-600 ring-4 ring-white" aria-hidden="true"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">{job.role}</h3>
+                <p class="text-indigo-600 font-medium">{job.company}</p>
+              </div>
+              <div class="sm:text-right shrink-0">
+                <p class="text-sm text-slate-500">{job.period}</p>
+                <p class="text-sm text-slate-400">{job.location}</p>
+              </div>
+            </div>
+            <ul class="space-y-1.5">
+              {job.bullets.map((bullet) => (
+                <li class="text-slate-600 text-sm pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-slate-300">
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
