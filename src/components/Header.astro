@@ -16,8 +16,8 @@ const nav = [
     >
       Pete C<span
         id="name-reveal"
-        class="inline-block overflow-hidden whitespace-nowrap"
-        style="width:0;vertical-align:text-bottom"
+        class="inline-block"
+        style="clip-path: inset(0 100% 0 0)"
       >hitvicheankul</span>
     </a>
     <nav>
@@ -40,29 +40,16 @@ const nav = [
 <script>
   const el = document.getElementById('name-reveal') as HTMLElement;
 
-  let naturalWidth = 0;
-
-  function measure() {
-    el.style.width = 'auto';
-    naturalWidth = el.offsetWidth;
-    // Immediately restore to scroll-driven width so there's no flash
-    apply();
-  }
-
   function progress(): number {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
   }
 
   function apply() {
-    el.style.width = `${progress() * naturalWidth}px`;
+    // Reveal left-to-right: reduce the right clip value from 100% → 0%
+    el.style.clipPath = `inset(0 ${(1 - progress()) * 100}% 0 0)`;
   }
 
-  // Measure on first paint (width:auto gives us the natural text width)
-  measure();
-
+  apply();
   window.addEventListener('scroll', apply, { passive: true });
-
-  // Re-measure if the viewport resizes (font-size may change at breakpoints)
-  window.addEventListener('resize', measure, { passive: true });
 </script>
