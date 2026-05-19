@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand:   #D66853;
+  --color-surface: #2E3138;
+  --color-mid:     #6C6F7D;
+  --color-teal:    #B0D0D3;
+  --font-sans: "Avenir Next", "Avenir", ui-sans-serif, system-ui, sans-serif;
+}

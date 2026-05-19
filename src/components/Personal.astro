@@ -26,15 +26,15 @@ const interests = [
 
 <section id="personal" class="py-24 bg-white">
   <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-slate-900 mb-2">Personal</h2>
-    <p class="text-slate-500 mb-12">A bit about who I am outside of work.</p>
+    <h2 class="text-3xl font-bold text-surface mb-2">Personal</h2>
+    <p class="text-mid mb-12">A bit about who I am outside of work.</p>
 
     <div class="grid sm:grid-cols-2 gap-6">
       {interests.map(({ emoji, title, description }) => (
-        <div class="p-6 rounded-xl border border-slate-100 hover:border-indigo-100 hover:shadow-sm transition-all">
+        <div class="p-6 rounded-xl border border-teal/20 hover:border-teal hover:shadow-sm transition-all">
           <div class="text-3xl mb-3">{emoji}</div>
-          <h3 class="font-semibold text-slate-900 mb-1">{title}</h3>
-          <p class="text-slate-500 text-sm">{description}</p>
+          <h3 class="font-semibold text-surface mb-1">{title}</h3>
+          <p class="text-mid text-sm">{description}</p>
         </div>
       ))}
     </div>
