@@ -1,15 +1,15 @@
 ---
 const bio = [
-  "Group Product Manager with 10+ years' experience across product and engineering, building and scaling data-driven consumer platforms across SportsTech, FinTech, AdTech, and Payments.",
-  "I specialise in product strategy, AI-powered personalisation, and leading cross-functional teams to deliver measurable growth across engagement, adoption, and revenue metrics. My work has spanned 0→1 product development through to large-scale platforms processing millions of transactions daily.",
-  "I'm particularly passionate about turning complex data into simple, intuitive user experiences through experimentation, rapid iteration, and customer-focused product thinking.",
+  "I am a Group Product Manager with 10+ years across product and engineering, building and scaling data-driven consumer platforms across SportsTech, FinTech, AdTech, and Payments.",
+  "I've led AI-powered personalisation initiatives, 0→1 product launches, and platforms processing millions of transactions daily — driving measurable growth across engagement and revenue.",
+  "I thrive in ambiguity and fast-moving environments, quickly turning complex problems into clear execution plans and measurable outcomes. My engineering background helps me bridge technical depth with commercial strategy, aligning teams and stakeholders from implementation details through to executive decision-making.",
+  "I'm passionate about simplifying complexity through data, experimentation, and customer-focused product thinking.",
 ];
 
 const metrics = [
-  { value: "10+",  label: "Years in product\n& engineering" },
-  { value: "6",    label: "PMs led\n& mentored"             },
-  { value: "+24%", label: "Monthly active\nusers YoY"       },
-  { value: "€55m", label: "Portfolio\nunder strategy"       },
+  { value: "10+",  label: "Years across product\n& engineering" },
+  { value: "+24%", label: "Monthly active\nusers YoY"           },
+  { value: "€55m", label: "Portfolio\nunder strategy"           },
 ];
 
 const interests = [
@@ -21,15 +21,17 @@ const interests = [
 ---
 
 <section id="about" class="py-20 px-8 lg:px-14">
+  <h2 class="text-3xl font-bold text-surface mb-2">Get to know Pete</h2>
+
   <div class="space-y-4 text-mid text-base leading-relaxed mb-12">
     {bio.map(p => <p>{p}</p>)}
   </div>
 
-  <div class="grid grid-cols-2 gap-3 mb-12">
-    {metrics.map(({ value, label }) => (
-      <div class="p-5 rounded-xl bg-white border border-teal/20">
-        <p class="text-2xl font-bold text-brand mb-1">{value}</p>
-        <p class="text-xs text-mid leading-snug whitespace-pre-line">{label}</p>
+  <div class="flex mb-12">
+    {metrics.map(({ value, label }, i) => (
+      <div class={`flex-1 ${i > 0 ? 'border-l border-surface/15 pl-8' : ''}`}>
+        <p class="text-3xl font-bold text-brand">{value}</p>
+        <p class="text-xs text-mid leading-snug whitespace-pre-line mt-1">{label}</p>
       </div>
     ))}
   </div>
