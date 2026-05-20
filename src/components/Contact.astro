@@ -1,52 +1,56 @@
 ---
+import emailSvg    from '../assets/envelope-fill.svg?raw';
+import linkedinSvg from '../assets/linkedin.svg?raw';
+import githubSvg   from '../assets/github.svg?raw';
+
 const links = [
   {
     label:   "Email",
     href:    "mailto:pete.chitvicheankul@gmail.com",
-    icon:    "✉️",
+    svg:     emailSvg,
     display: "pete.chitvicheankul@gmail.com",
   },
   {
     label:   "LinkedIn",
     href:    "https://linkedin.com/in/petekul",
-    icon:    "💼",
+    svg:     linkedinSvg,
     display: "linkedin.com/in/petekul",
   },
   {
     label:   "GitHub",
     href:    "https://github.com/petekul",
-    icon:    "⌨️",
+    svg:     githubSvg,
     display: "github.com/petekul",
   },
 ];
 ---
 
-<section id="contact" class="py-24 bg-surface text-white">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-2">Get in touch</h2>
-    <p class="text-teal mb-12 max-w-md mx-auto">
+<section id="contact" class="py-24 bg-[#F0EAE0]">
+  <div class="px-8 lg:px-14">
+    <h2 class="text-3xl font-bold text-surface mb-2">Get in touch</h2>
+    <p class="text-mid mb-10 max-w-sm">
       Always open to interesting conversations, collaborations, or opportunities.
     </p>
 
-    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-      {links.map(({ label, href, icon, display }) => (
+    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+      {links.map(({ label, href, svg, display }) => (
         <a
           href={href}
           target={href.startsWith('http') ? '_blank' : undefined}
           rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="flex items-center gap-3 px-6 py-4 bg-[#3d4149] hover:bg-[#464b55] rounded-xl transition-colors text-left"
+          class="flex items-center gap-3 px-5 py-4 bg-white border border-teal/20 hover:border-brand rounded-xl transition-colors text-left"
         >
-          <span class="text-xl" aria-hidden="true">{icon}</span>
+          <span class="text-brand shrink-0" aria-hidden="true" set:html={svg} />
           <div>
             <p class="text-xs text-mid mb-0.5">{label}</p>
-            <p class="text-sm font-medium text-white">{display}</p>
+            <p class="text-sm font-medium text-surface">{display}</p>
           </div>
         </a>
       ))}
     </div>
 
-    <p class="text-mid text-sm">
-      Built with <a href="https://astro.build" class="text-mid hover:text-teal transition-colors" target="_blank" rel="noopener noreferrer">Astro</a> & Tailwind CSS · Hosted on GitHub Pages
+    <p class="text-mid/60 text-sm">
+      Built with <a href="https://astro.build" class="hover:text-mid transition-colors" target="_blank" rel="noopener noreferrer">Astro</a> & Tailwind CSS · Hosted on GitHub Pages
     </p>
   </div>
 </section>

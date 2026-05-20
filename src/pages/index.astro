@@ -1,20 +1,151 @@
 ---
 import Layout     from '../layouts/Layout.astro';
-import Header     from '../components/Header.astro';
-import Hero       from '../components/Hero.astro';
+import About      from '../components/About.astro';
+import Projects   from '../components/Projects.astro';
 import Experience from '../components/Experience.astro';
 import Skills     from '../components/Skills.astro';
-import Personal   from '../components/Personal.astro';
 import Contact    from '../components/Contact.astro';
+
+import emailSvg    from '../assets/envelope-fill.svg?raw';
+import linkedinSvg from '../assets/linkedin.svg?raw';
+import githubSvg   from '../assets/github.svg?raw';
+import downloadSvg  from '../assets/download.svg?raw';
+import behanceSvg  from '../assets/behance.svg?raw';
+
+const nav = [
+  { id: 'about',      label: 'About'      },
+  { id: 'projects',   label: 'Projects'   },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills',     label: 'Skills'     },
+  { id: 'contact',    label: 'Contact'    },
+];
+
+const socials = [
+  { href: 'mailto:pete.chitvicheankul@gmail.com', svg: emailSvg,    label: 'Email'    },
+  { href: 'https://linkedin.com/in/petekul',       svg: linkedinSvg, label: 'LinkedIn' },
+  { href: 'https://github.com/petekul',            svg: githubSvg,   label: 'GitHub'   },
+  { href: 'https://www.behance.net/petekul',       svg: behanceSvg,  label: 'Behance'  },
+];
 ---
 
 <Layout>
-  <Header />
-  <main>
-    <Hero />
-    <Experience />
-    <Skills />
-    <Personal />
-    <Contact />
-  </main>
+  <div class="lg:flex min-h-screen">
+
+    <!-- ── Sticky left sidebar ── -->
+    <aside class="lg:sticky lg:top-0 lg:h-screen lg:w-[30%] bg-surface text-white flex flex-col justify-between px-8 py-14 lg:px-10 lg:py-20">
+      <div>
+        <!-- Profile photo — replace src with your image path when ready -->
+        <div class="w-24 h-24 rounded-full mb-6 overflow-hidden bg-white/10 border-2 border-white/20">
+          <img
+            src="/profile.jpg"
+            alt="Pete Chitvicheankul"
+            class="w-full h-full object-cover"
+            onerror="this.style.display='none'"
+          />
+        </div>
+
+        <h1 class="text-3xl font-bold leading-snug">
+          Pete Chitvicheankul
+        </h1>
+        <p class="mt-2 text-base text-white/80 font-light">Group Product Manager</p>
+        <p class="mt-4 text-sm text-white/55 leading-relaxed ">
+          Building data-driven products that scale. 10+ years across product, engineering, and growth.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="#contact"
+            class="px-5 py-2.5 bg-brand hover:bg-brand/85 text-white text-sm rounded-lg font-medium transition-colors"
+          >
+            Get in touch
+          </a>
+          <a
+            href="/pete-chitvicheankul-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/30 hover:border-white text-white/70 hover:text-white text-sm rounded-lg font-medium transition-colors [&>svg]:w-4 [&>svg]:h-4 [&>svg]:shrink-0"
+            set:html={`${downloadSvg} Resume`}
+          />
+        </div>
+
+        <!-- Nav — desktop only -->
+        <nav class="mt-14 hidden lg:block" aria-label="On-page sections">
+          <ul class="space-y-0.5">
+            {nav.map(({ id, label }) => (
+              <li>
+                <a
+                  href={`#${id}`}
+                  data-nav={id}
+                  class="group flex items-center gap-4 py-2 text-white/40 hover:text-white transition-colors"
+                >
+                  <span
+                    data-line
+                    class="block h-px w-8 bg-white/20 transition-all duration-300 group-hover:w-14 group-hover:bg-white"
+                  ></span>
+                  <span class="text-xs font-semibold tracking-widest uppercase">{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-5 mt-10">
+        {socials.map(({ href, svg, label }) => (
+          <a
+            href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            aria-label={label}
+            class="text-white/40 hover:text-white transition-colors [&>svg]:block [&>svg]:w-5 [&>svg]:h-5"
+            set:html={svg}
+          />
+        ))}
+      </div>
+    </aside>
+
+    <!-- ── Scrolling right panel ── -->
+    <main class="lg:w-[70%] bg-[#FAF7F2]">
+      <About />
+      <Projects />
+      <Experience />
+      <Skills />
+      <Contact />
+    </main>
+
+  </div>
 </Layout>
+
+<script>
+  const navLinks = document.querySelectorAll<HTMLElement>('[data-nav]');
+  const sections = [...navLinks]
+    .map(l => document.getElementById(l.dataset.nav!))
+    .filter((s): s is HTMLElement => s !== null);
+
+  function setActive(activeId: string) {
+    navLinks.forEach(link => {
+      const on = link.dataset.nav === activeId;
+      link.classList.toggle('text-white', on);
+      link.classList.toggle('text-white/40', !on);
+      const line = link.querySelector<HTMLElement>('[data-line]');
+      if (line) {
+        line.classList.toggle('w-14', on);
+        line.classList.toggle('bg-white', on);
+        line.classList.toggle('w-8', !on);
+        line.classList.toggle('bg-white/20', !on);
+      }
+    });
+  }
+
+  function getActiveId(): string {
+    let active = sections[0]?.id ?? '';
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= window.innerHeight * 0.45) active = s.id;
+    }
+    return active;
+  }
+
+  setActive(getActiveId());
+  window.addEventListener('scroll', () => setActive(getActiveId()), { passive: true });
+</script>

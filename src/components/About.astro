@@ -1,0 +1,46 @@
+---
+const bio = [
+  "Group Product Manager with 10+ years' experience across product and engineering, building and scaling data-driven consumer platforms across SportsTech, FinTech, AdTech, and Payments.",
+  "I specialise in product strategy, AI-powered personalisation, and leading cross-functional teams to deliver measurable growth across engagement, adoption, and revenue metrics. My work has spanned 0→1 product development through to large-scale platforms processing millions of transactions daily.",
+  "I'm particularly passionate about turning complex data into simple, intuitive user experiences through experimentation, rapid iteration, and customer-focused product thinking.",
+];
+
+const metrics = [
+  { value: "10+",  label: "Years in product\n& engineering" },
+  { value: "6",    label: "PMs led\n& mentored"             },
+  { value: "+24%", label: "Monthly active\nusers YoY"       },
+  { value: "€55m", label: "Portfolio\nunder strategy"       },
+];
+
+const interests = [
+  { emoji: "🧗", label: "Climbing"      },
+  { emoji: "🏂", label: "Snowboarding"  },
+  { emoji: "🤿", label: "Scuba Diving"  },
+  { emoji: "🎲", label: "Board Games"   },
+];
+---
+
+<section id="about" class="py-20 px-8 lg:px-14">
+  <div class="space-y-4 text-mid text-base leading-relaxed mb-12">
+    {bio.map(p => <p>{p}</p>)}
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 mb-12">
+    {metrics.map(({ value, label }) => (
+      <div class="p-5 rounded-xl bg-white border border-teal/20">
+        <p class="text-2xl font-bold text-brand mb-1">{value}</p>
+        <p class="text-xs text-mid leading-snug whitespace-pre-line">{label}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-xs font-semibold text-mid uppercase tracking-widest mb-3">Outside of work</p>
+  <div class="flex flex-wrap gap-2">
+    {interests.map(({ emoji, label }) => (
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-teal/20 text-sm text-surface">
+        <span>{emoji}</span>
+        {label}
+      </span>
+    ))}
+  </div>
+</section>

@@ -55,5 +55,14 @@ Each component has a clearly marked data block at the top (inside the Astro fron
 The workflow deploys automatically on every push to `main`.
 
 ## Style Guide
-Primary Colour = #D66853
-Other colours, #FFFFFF, #B0D0D3, #6C6F7D, #2E3138
+
+Warm Editorial theme. Keep `#D66853` as the primary brand colour in all future work.
+
+| Role        | Token     | Hex       | Usage                              |
+|-------------|-----------|-----------|------------------------------------|
+| Primary     | `brand`   | `#D66853` | CTAs, links, timeline dots         |
+| Warm        | `surface` | `#B85C38` | Hero & Contact section backgrounds |
+| Accent      | `teal`    | `#C4956A` | Secondary text, borders, icons     |
+| Muted       | `mid`     | `#8C7B6E` | Body text, labels, nav links       |
+| Background  | —         | `#FAF7F2` | Page & light section backgrounds   |
+| Alt section | —         | `#F0EAE0` | Skills section background          |
