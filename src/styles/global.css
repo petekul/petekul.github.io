@@ -20,15 +20,52 @@
   --color-bg-alt:           #222740;
 }
 
-[data-theme="dark"] .bg-surface  { background-color: #161929; }
 [data-theme="dark"] .text-surface { color: #dde4ee; }
-[data-theme="dark"] .bg-white    { background-color: #262b42; }
+[data-theme="dark"] .bg-white:not([data-line])    { background-color: #262b42; }
+
+/* Sidebar stays at --color-surface (#2d3142); border provides visual separation */
+[data-theme="dark"] aside { border-right: 1px solid rgba(255,255,255,0.06); }
+
+/* Restore hover lift on dark cards (hardcoded shadow is invisible on dark bg) */
+[data-theme="dark"] .bg-white:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.45) !important; }
+
+/* CTA button: bg-bg on dark sidebar is only 1.26:1 — add border to define shape */
+/* :not([data-nav]) excludes the Contact nav link which shares the same href */
+[data-theme="dark"] a[href="#contact"]:not([data-nav]) {
+  background-color: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.9);
+}
+[data-theme="dark"] a[href="#contact"]:not([data-nav]):hover {
+  background-color: rgba(255,255,255,0.15);
+  color: white;
+}
+
+/* Skill/tag chips: bg-bg is same as page bg in dark mode — lift them slightly */
+[data-theme="dark"] .rounded-full.bg-bg,
+[data-theme="dark"] .rounded-full.bg-bg-alt {
+  background-color: rgba(255,255,255,0.07);
+}
 
 :focus-visible {
   outline: 2px solid #b5552a;
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* Coral is more visible than dark burnt-sienna on dark surfaces */
+[data-theme="dark"] :focus-visible { outline-color: #ef8354; }
+
+/* Nav: distinct hover vs. active states */
+[data-nav]                              { color: rgba(255,255,255,0.45); transition: color 200ms ease-out; }
+[data-nav]:hover                        { color: rgba(255,255,255,0.75); }
+[data-nav][aria-current="true"]         { color: white; }
+[data-nav][aria-current="true"]:hover   { color: rgba(255,255,255,0.9); }
+
+[data-nav] [data-line]                            { width: 2rem;    background-color: rgba(255,255,255,0.20); transition: width 250ms ease-out, background-color 200ms ease-out; }
+[data-nav]:hover [data-line]                      { width: 2.5rem;  background-color: rgba(255,255,255,0.45); }
+[data-nav][aria-current="true"] [data-line]       { width: 3.5rem;  background-color: white; }
+[data-nav][aria-current="true"]:hover [data-line] { width: 3.5rem;  background-color: white; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

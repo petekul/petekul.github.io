@@ -39,6 +39,8 @@ const socials = [
           <img
             src="/profile.jpg"
             alt="Pete Chitvicheankul"
+            width="96"
+            height="96"
             class="w-full h-full object-cover"
             onerror="this.parentElement.style.display='none'"
           />
@@ -49,7 +51,7 @@ const socials = [
         </h1>
         <p class="mt-2 text-base text-white/95">Group Product Manager</p>
         <p class="mt-4 text-sm text-white/75 leading-relaxed">
-          Product leader with 10+ years experience across product & engineering, bridging strategy and execution across complex data-heavy products at scale.
+          Former full-stack engineer. Now owning the product strategy and P&L for a €55M product portfolio.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
@@ -87,11 +89,11 @@ const socials = [
                 <a
                   href={`#${id}`}
                   data-nav={id}
-                  class="group flex items-center gap-4 py-2 text-white/60 hover:text-white transition-colors"
+                  class="flex items-center gap-4 py-2"
                 >
                   <span
                     data-line
-                    class="block h-px w-8 bg-white/20 transition-all duration-300 group-hover:w-14 group-hover:bg-white"
+                    class="block h-px"
                   ></span>
                   <span class="text-xs font-semibold tracking-widest uppercase">{label}</span>
                 </a>
@@ -109,14 +111,15 @@ const socials = [
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
             aria-label={label}
-            class="p-2.5 -m-2.5 text-white/40 hover:text-white transition-colors [&>svg]:block [&>svg]:w-5 [&>svg]:h-5"
+            class="p-3 -m-3 text-white/40 hover:text-white transition-colors [&>svg]:block [&>svg]:w-5 [&>svg]:h-5"
             set:html={svg}
           />
         ))}
         <button
           id="theme-toggle"
           aria-label="Toggle night mode"
-          class="p-2.5 -m-2.5 ml-auto text-white/40 hover:text-white transition-colors"
+          aria-pressed="false"
+          class="p-3 -m-3 ml-auto text-white/40 hover:text-white transition-colors"
         >
           <!-- Moon: visible in light mode -->
           <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -154,20 +157,19 @@ const socials = [
 
   function setActive(activeId: string) {
     navLinks.forEach(link => {
-      const on = link.dataset.nav === activeId;
-      link.classList.toggle('text-white', on);
-      link.classList.toggle('text-white/60', !on);
-      const line = link.querySelector<HTMLElement>('[data-line]');
-      if (line) {
-        line.classList.toggle('w-14', on);
-        line.classList.toggle('bg-white', on);
-        line.classList.toggle('w-8', !on);
-        line.classList.toggle('bg-white/20', !on);
+      if (link.dataset.nav === activeId) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
       }
     });
   }
 
   function getActiveId(): string {
+    // At the bottom of the page, activate the last section regardless of threshold
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 20) {
+      return sections[sections.length - 1]?.id ?? '';
+    }
     let active = sections[0]?.id ?? '';
     for (const s of sections) {
       if (s.getBoundingClientRect().top <= window.innerHeight * 0.45) active = s.id;
@@ -187,12 +189,12 @@ const socials = [
     document.documentElement.dataset.theme = dark ? 'dark' : '';
     moon?.classList.toggle('hidden', dark);
     sun?.classList.toggle('hidden', !dark);
+    toggle?.setAttribute('aria-pressed', String(dark));
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   }
 
   const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(saved === 'dark' || (saved === null && prefersDark));
+  applyTheme(saved !== 'light');
 
   toggle?.addEventListener('click', () => {
     applyTheme(document.documentElement.dataset.theme !== 'dark');
