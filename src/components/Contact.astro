@@ -25,11 +25,11 @@ const links = [
 ];
 ---
 
-<section id="contact" class="py-24 bg-bg-alt">
+<section id="contact" class="py-24 bg-bg">
   <div class="px-8 lg:px-14">
     <h2 class="text-3xl font-bold text-surface mb-2">Get in touch</h2>
     <p class="text-mid mb-10 max-w-sm">
-      Open to Group PM and Director-level opportunities. Always happy to talk product strategy, data, or anything interesting.
+      Open to Senior PM through to Director-level roles. Always happy to connect.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 mb-16">
@@ -38,7 +38,7 @@ const links = [
           href={href}
           target={href.startsWith('http') ? '_blank' : undefined}
           rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="flex items-center gap-3 px-5 py-4 bg-white border border-teal/20 hover:border-brand hover:shadow-[0_4px_16px_rgba(184,92,56,0.12)] rounded-xl transition-all text-left"
+          class="flex items-center gap-3 px-5 py-4 bg-white border border-teal/20 hover:border-brand hover:shadow-[0_4px_16px_rgba(45,49,66,0.12)] rounded-xl transition-all text-left"
         >
           <span class="text-brand shrink-0" aria-hidden="true" set:html={svg} />
           <div>
@@ -49,8 +49,5 @@ const links = [
       ))}
     </div>
 
-    <p class="text-mid/60 text-sm">
-      Built with <a href="https://astro.build" class="hover:text-mid transition-colors" target="_blank" rel="noopener noreferrer">Astro</a> & Tailwind CSS · Hosted on GitHub Pages
-    </p>
   </div>
 </section>
