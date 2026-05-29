@@ -194,7 +194,7 @@ const socials = [
   }
 
   const saved = localStorage.getItem('theme');
-  applyTheme(saved !== 'light');
+  applyTheme(saved === 'dark');
 
   toggle?.addEventListener('click', () => {
     applyTheme(document.documentElement.dataset.theme !== 'dark');
