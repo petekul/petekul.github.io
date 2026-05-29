@@ -13,7 +13,7 @@ const roles: Role[] = [
     period:  "Mar 2025 - Present",
     bullets: [
       "Scaled and developed a team of 6 Product Managers across core sports content, establishing product operating models that introduced structured planning cycles, OKR frameworks and cross-functional alignment.",
-      "Owned strategy and roadmap for a €55M business-critical odds platform — translating a 3-year vision into quarterly OKRs and delivering platform modernisation that enabled 7x faster time-to-market.",
+      "Owned strategy and roadmap for a €55M business-critical odds platform: translating a 3-year vision into quarterly OKRs and delivering platform modernisation that enabled 7x faster time-to-market.",
       "Shipped AI-personalised betting experiences that grew bets placed by 22% within the first year, contributing to sustained revenue growth of +45% YoY.",
       "Drove 2x subscription growth and improved margins by ~8p.p through enhanced player data insights and deepened behavioural modelling.",
       "Accelerated adoption of personalisation experiences by 32% within 3 months through refined go-to-market execution and alignment across Engineering, Data, Design, Commercial, Marketing, Legal, and Support.",
@@ -26,7 +26,7 @@ const roles: Role[] = [
     bullets: [
       "Managed and mentored a team of 2 PMs, improving product execution through structured coaching and raising overall delivery consistency across fan engagement initiatives.",
       "Led two product teams to ship AI-powered personalisation and recommendation features, driving +41% growth in product subscriptions within 12 months.",
-      "Built a 0-to-1 platform capability from scratch — assembling the team, shaping the product strategy, and launching a product that now processes 9M transactions daily, generating €3.2M in incremental monthly revenue.",
+      "Built a 0-to-1 platform capability from scratch: assembling the team, shaping the product strategy, and launching a product that now processes 9M transactions daily, generating €3.2M in incremental monthly revenue.",
     ],
   },
   {
@@ -52,7 +52,7 @@ const roles: Role[] = [
     bullets: [
       "Built and launched global eCommerce checkout capabilities, enabling merchants to accept secure and compliant online payments across multiple markets.",
       "Engineered several high-volume payment products which processed 1B+ payments daily.",
-      "Developed strong expertise in Java, Typescript and React."
+      "Developed strong expertise in Java, TypeScript and React."
     ],
   },
   {
@@ -76,8 +76,7 @@ const education = {
 
 <section id="experience" class="py-24">
   <div class="px-8 lg:px-14">
-    <h2 class="text-3xl font-bold text-surface mb-2">Experience</h2>
-    <p class="text-mid mb-12">Where I've worked and what I've built.</p>
+    <h2 class="text-3xl font-bold text-surface mb-12">Experience</h2>
 
     <div class="relative">
       <div class="absolute left-0 top-2 bottom-2 w-px bg-teal/30 ml-1.5 hidden md:block" aria-hidden="true"></div>
@@ -85,13 +84,13 @@ const education = {
       <div class="space-y-10">
         {roles.map((job) => (
           <div class="md:pl-10 relative">
-            <div class="hidden md:block absolute left-0 top-1.5 w-3 h-3 rounded-full bg-brand ring-4 ring-[#FAF7F2]" aria-hidden="true"></div>
+            <div class="hidden md:block absolute left-0 top-1.5 w-3 h-3 rounded-full bg-brand ring-4 ring-bg" aria-hidden="true"></div>
             <div class="mb-3">
               <div class="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
                 <h3 class="text-lg font-semibold text-surface">{job.role}</h3>
                 <p class="text-sm text-mid shrink-0">{job.period}</p>
               </div>
-              <p class="text-brand font-medium">{job.company}</p>
+              <p class="text-brand-accessible font-medium">{job.company}</p>
             </div>
             <ul class="space-y-2">
               {job.bullets.map((bullet) => (
@@ -105,16 +104,18 @@ const education = {
       </div>
     </div>
 
-    <!-- Education -->
-    <div class="mt-20">
-      <h2 class="text-3xl font-bold text-surface mb-2">Education</h2>
-      <div class="mt-8 md:pl-10 relative">
-        <div class="hidden md:block absolute left-0 top-1.5 w-3 h-3 rounded-full bg-brand ring-4 ring-[#FAF7F2]" aria-hidden="true"></div>
-        <h3 class="text-lg font-semibold text-surface">{education.degree}</h3>
-        <p class="text-brand font-medium">{education.institution}</p>
-        <p class="text-sm text-mid mt-1">{education.result}</p>
-        <p class="text-sm text-mid mt-0.5">{education.award}</p>
-      </div>
+  </div>
+</section>
+
+<section id="education" class="py-16 pb-24">
+  <div class="px-8 lg:px-14">
+    <h2 class="text-3xl font-bold text-surface mb-2">Education</h2>
+    <div class="mt-8 md:pl-10 relative">
+      <div class="hidden md:block absolute left-0 top-1.5 w-3 h-3 rounded-full bg-brand ring-4 ring-bg" aria-hidden="true"></div>
+      <h3 class="text-lg font-semibold text-surface">{education.degree}</h3>
+      <p class="text-brand font-medium">{education.institution}</p>
+      <p class="text-sm text-mid mt-1">{education.result}</p>
+      <p class="text-sm text-mid mt-0.5">{education.award}</p>
     </div>
   </div>
 </section>

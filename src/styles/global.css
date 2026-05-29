@@ -1,9 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand:   #D66853;
-  --color-surface: #B85C38;
-  --color-mid:     #8C7B6E;
+  --color-brand:            #D66853;
+  --color-brand-accessible: #B8472F;
+  --color-surface:          #B85C38;
+  --color-mid:     #6B5B50;
   --color-teal:    #C4956A;
+  --color-bg:      #FAF7F2;
+  --color-bg-alt:  #F0EAE0;
   --font-sans: "Avenir Next", "Avenir", ui-sans-serif, system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #D66853;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

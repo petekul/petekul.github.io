@@ -40,16 +40,16 @@ const socials = [
             src="/profile.jpg"
             alt="Pete Chitvicheankul"
             class="w-full h-full object-cover"
-            onerror="this.style.display='none'"
+            onerror="this.parentElement.style.display='none'"
           />
         </div>
 
         <h1 class="text-3xl font-bold leading-snug">
           Pete Chitvicheankul
         </h1>
-        <p class="mt-2 text-base text-white/80 font-light">Group Product Manager</p>
-        <p class="mt-4 text-sm text-white/55 leading-relaxed ">
-          Seasoned product leader with 10+ years experience across product & engineering, bridging strategy and execution across complex data-heavy products at scale.
+        <p class="mt-2 text-base text-white/95">Group Product Manager</p>
+        <p class="mt-4 text-sm text-white/75 leading-relaxed">
+          Product leader with 10+ years experience across product & engineering, bridging strategy and execution across complex data-heavy products at scale.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
@@ -68,6 +68,17 @@ const socials = [
           />
         </div>
 
+        <!-- Mobile jump-links: visible below lg where the sidebar nav is hidden -->
+        <nav class="mt-6 lg:hidden" aria-label="Jump to section">
+          <div class="flex flex-wrap gap-x-5 gap-y-2">
+            {nav.map(({ id, label }) => (
+              <a href={`#${id}`} class="text-sm text-white/60 hover:text-white transition-colors">
+                {label}
+              </a>
+            ))}
+          </div>
+        </nav>
+
         <!-- Nav — desktop only -->
         <nav class="mt-14 hidden lg:block" aria-label="On-page sections">
           <ul class="space-y-0.5">
@@ -76,7 +87,7 @@ const socials = [
                 <a
                   href={`#${id}`}
                   data-nav={id}
-                  class="group flex items-center gap-4 py-2 text-white/40 hover:text-white transition-colors"
+                  class="group flex items-center gap-4 py-2 text-white/60 hover:text-white transition-colors"
                 >
                   <span
                     data-line
@@ -98,7 +109,7 @@ const socials = [
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
             aria-label={label}
-            class="text-white/40 hover:text-white transition-colors [&>svg]:block [&>svg]:w-5 [&>svg]:h-5"
+            class="p-2.5 -m-2.5 text-white/40 hover:text-white transition-colors [&>svg]:block [&>svg]:w-5 [&>svg]:h-5"
             set:html={svg}
           />
         ))}
@@ -106,7 +117,7 @@ const socials = [
     </aside>
 
     <!-- ── Scrolling right panel ── -->
-    <main class="lg:w-[70%] bg-[#FAF7F2]">
+    <main id="main-content" class="lg:w-[70%] bg-bg">
       <About />
       <Projects />
       <Experience />
@@ -127,7 +138,7 @@ const socials = [
     navLinks.forEach(link => {
       const on = link.dataset.nav === activeId;
       link.classList.toggle('text-white', on);
-      link.classList.toggle('text-white/40', !on);
+      link.classList.toggle('text-white/60', !on);
       const line = link.querySelector<HTMLElement>('[data-line]');
       if (line) {
         line.classList.toggle('w-14', on);
