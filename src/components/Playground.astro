@@ -13,21 +13,26 @@ const projects: PlaygroundProject[] = [
     url:         "https://petekul.github.io/guitar-assist",
   },
   {
-    name:        "Project Two",
-    description: "Placeholder — replace with a real project description.",
-    url:         "https://petekul.github.io/project-two",
+    name:        "Financial Tracker",
+    description: "A personal finance dashboard for tracking income, expenses, and budgets — giving a clear picture of where your money goes each month.",
+    url:         "https://petekul.github.io/Financial-tracker",
   },
   {
-    name:        "Project Three",
-    description: "Placeholder — replace with a real project description.",
-    url:         "https://petekul.github.io/project-three",
+    name:        "Retirement Sim",
+    description: "A retirement savings simulator that models long-term portfolio growth, withdrawal strategies, and the impact of different contribution rates.",
+    url:         "https://petekul.github.io/retirement-sim",
+  },
+  {
+    name:        "Sportradar Ideathon",
+    description: "A concept pitch and prototype built during a Sportradar ideathon, exploring new product ideas within the sports data space.",
+    url:         "https://petekul.github.io/sportradar-ideathon",
   },
 ];
 ---
 
 <section id="playground" class="py-24 bg-bg">
   <div class="px-8 lg:px-14">
-    <h2 class="text-3xl font-bold text-surface mb-12">Playground</h2>
+    <h2 class="text-3xl font-bold text-surface mb-12">Playground <span class="text-lg font-normal text-mid">(WIP)</span></h2>
 
     <div class="grid sm:grid-cols-2 gap-6">
       {projects.map(({ name, description, url, screenshot }) => (
@@ -37,7 +42,7 @@ const projects: PlaygroundProject[] = [
           rel="noopener noreferrer"
           class="group rounded-xl bg-white border border-teal/20 hover:border-brand hover:shadow-[0_4px_16px_rgba(45,49,66,0.12)] transition-all flex flex-col overflow-hidden"
         >
-          <div class="relative h-44 overflow-hidden">
+          <div class="relative h-28 overflow-hidden">
             {screenshot ? (
               <img
                 src={screenshot}
@@ -63,7 +68,9 @@ const projects: PlaygroundProject[] = [
 
 <style>
   .screenshot-placeholder {
-    background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-teal) 100%);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--color-surface) 18%, var(--color-bg)) 0%,
+      color-mix(in srgb, var(--color-surface) 10%, var(--color-bg)) 100%);
   }
 
   .gradient-fade {
