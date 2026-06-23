@@ -1,0 +1,80 @@
+---
+interface PlaygroundProject {
+  name:        string;
+  description: string;
+  url:         string;
+  screenshot?: string;
+}
+
+const projects: PlaygroundProject[] = [
+  {
+    name:        "Guitar Assist",
+    description: "An interactive guitar chord and scale reference tool. Look up chords, find scales, and explore fretboard patterns — built for quick reference while practising.",
+    url:         "https://petekul.github.io/guitar-assist",
+  },
+  {
+    name:        "Project Two",
+    description: "Placeholder — replace with a real project description.",
+    url:         "https://petekul.github.io/project-two",
+  },
+  {
+    name:        "Project Three",
+    description: "Placeholder — replace with a real project description.",
+    url:         "https://petekul.github.io/project-three",
+  },
+];
+---
+
+<section id="playground" class="py-24 bg-bg">
+  <div class="px-8 lg:px-14">
+    <h2 class="text-3xl font-bold text-surface mb-12">Playground</h2>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      {projects.map(({ name, description, url, screenshot }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group rounded-xl bg-white border border-teal/20 hover:border-brand hover:shadow-[0_4px_16px_rgba(45,49,66,0.12)] transition-all flex flex-col overflow-hidden"
+        >
+          <div class="relative h-44 overflow-hidden">
+            {screenshot ? (
+              <img
+                src={screenshot}
+                alt={name}
+                class="w-full h-full object-cover object-top"
+              />
+            ) : (
+              <div class="screenshot-placeholder w-full h-full" />
+            )}
+            <div class="gradient-fade absolute inset-x-0 bottom-0 h-16 pointer-events-none" />
+          </div>
+
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-base font-bold text-surface leading-snug">{name}</h3>
+            <p class="text-sm text-mid leading-relaxed mt-1 flex-1">{description}</p>
+            <p class="url-text text-xs mt-3 truncate">{url.replace('https://', '')}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshot-placeholder {
+    background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-teal) 100%);
+  }
+
+  .gradient-fade {
+    background: linear-gradient(to bottom, transparent, white);
+  }
+
+  [data-theme="dark"] .gradient-fade {
+    background: linear-gradient(to bottom, transparent, #262b42);
+  }
+
+  .url-text {
+    color: color-mix(in srgb, var(--color-mid) 60%, transparent);
+  }
+</style>
